@@ -320,17 +320,13 @@ select:focus {
   background-color: #fff;
   display: block;
   list-style-type: none;
-  margin: 0 0 30px;
+  margin: 30px 0;
   overflow: hidden;
-  padding: 0 20px 20px;
+  padding: 0 0 20px;
   position: relative;
   width: 100%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   border-radius: 10px 0 10px 0;
-
-  
-  margin: 40px 0;
-  padding: 0 0 20px;
 }
 #reviews-list li p {
   margin: 0 0 10px;
@@ -365,8 +361,14 @@ select:focus {
 }
 #restaurant-hours td {
   color: #666;
+}
+#restaurant-hours td:nth-child(1) {
+  width: 30%;
   text-align: left;
-  width: 50%;
+}
+#restaurant-hours td:nth-child(2) {
+  width: 70%;
+  text-align: right;
 }
 #restaurant-hours {
   color: #666;
@@ -382,7 +384,7 @@ select:focus {
     margin: 10px;
   }
   #restaurant-hours {
-    width: 300px;
+    width: 400px;
 }
 }
 
