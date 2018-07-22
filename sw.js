@@ -7,14 +7,14 @@ const allCaches = [
 
 const cssFiles = [
   'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
-  'css/styles.css'
+  '/css/styles.css'
 ];
 
 const jsFiles = [
   'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
-  'js/dbhelper.js',
-  'js/main.js',
-  'js/restaurant_info.js'
+  '/js/dbhelper.js',
+  '/js/main.js',
+  '/js/restaurant_info.js'
 ];
 
 self.addEventListener('install', (event) => {

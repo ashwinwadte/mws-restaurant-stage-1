@@ -55,7 +55,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   position: absolute;
   top: -100px;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
   padding: 8px;
   background: #fff;
   color: #73beff;
@@ -63,6 +63,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 .skip-link:focus {
   top: 0;
   outline: 0 !important;
+  color: #1d51b3;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 }
 /* ====================== Navigation ====================== */
@@ -443,5 +444,13 @@ select:focus {
   }
   .inside #footer {
     width: calc(50% - 50px);
+  }
+}
+
+/* for screen less than 1500px*/
+@media screen and (min-width: 1500px) {
+  #restaurants-list {
+    width: 1500px;
+    grid-template-columns: auto auto auto auto;
   }
 }

@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 registerServiceWorker = () => {
   if (!navigator.serviceWorker) return;
 
-  navigator.serviceWorker.register('../sw/index.js').then(() => {
+  navigator.serviceWorker.register('/sw.js').then(() => {
     console.log('Service worker registered successfully!');
   }).catch((error) => {
     console.log('Error occured while registering service worker: ', error);
