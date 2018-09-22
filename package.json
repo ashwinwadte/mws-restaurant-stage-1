@@ -1,0 +1,44 @@
+{
+  "name": "mws-restaurant-stage-1",
+  "version": "1.0.0",
+  "description": "Restaurant app",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "idb": "^2.1.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.24.7",
+    "browserify": "^16.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^5.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jasmine-phantom": "^3.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "imagemin-pngquant": "^6.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashwinwadte/mws-restaurant-stage-1.git"
+  },
+  "author": "Ashwin Wadte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashwinwadte/mws-restaurant-stage-1/issues"
+  },
+  "homepage": "https://github.com/ashwinwadte/mws-restaurant-stage-1#readme"
+}
