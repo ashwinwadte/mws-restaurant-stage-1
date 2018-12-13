@@ -95,10 +95,25 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
     const address = document.getElementById('restaurant-address');
     address.innerHTML = restaurant.address;
 
-    const image = document.getElementById('restaurant-img');
+    const picture = document.getElementById('restaurant-picture');
+
+    const webpSource = document.createElement('source');
+    webpSource.dataset.srcset = DBHelper.imageUrlForRestaurant(restaurant, true);
+    webpSource.type = 'image/webp';
+
+    const jpgSource = document.createElement('source');
+    jpgSource.dataset.srcset = DBHelper.imageUrlForRestaurant(restaurant, false);
+    jpgSource.type = 'image/jpeg';
+
+    const image = document.createElement('img');
+    image.id = 'restaurant-img';
     image.className = 'restaurant-img';
-    image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    image.src = DBHelper.imageUrlForRestaurant(restaurant, false);
     image.alt = 'Image of ' + restaurant.name + ' restaurant'; // add alt text as restaurant name
+
+    picture.appendChild(webpSource);
+    picture.appendChild(jpgSource);
+    picture.appendChild(image);
 
     const cuisine = document.getElementById('restaurant-cuisine');
     cuisine.innerHTML = restaurant.cuisine_type;

@@ -332,7 +332,9 @@ export class DBHelper {
     /**
      * Restaurant image URL.
      */
-    static imageUrlForRestaurant(restaurant) {
+    static imageUrlForRestaurant(restaurant, webp) {
+        if (webp)
+            return (`/img/webp/${restaurant.photograph}.webp`);
         return (`/img/${restaurant.photograph}.jpg`);
     }
 
