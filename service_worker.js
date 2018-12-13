@@ -22,6 +22,7 @@ self.addEventListener('install', (event) => {
         caches.open(staticCacheName).then((cache) => {
             cache.addAll([
                 '/',
+                'manifest.json',
                 ...cssFiles,
                 ...jsFiles
             ]);

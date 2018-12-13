@@ -1,4 +1,4 @@
-import DBHelper from './dbhelper';
+import {DBHelper, offlineFavoriteRestaurants} from './dbhelper';
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     document.getElementById('cuisines-select')
         .addEventListener('change', updateRestaurants);
+
+    // when online, sync the reconcile reviews with server
+    window.addEventListener('online', syncFavoriteRestaurantsWithServer);
 });
 
 /**
@@ -198,7 +201,24 @@ const createRestaurantHTML = (restaurant) => {
     // add aria role of button and label for accessibility
     more.setAttribute('role', 'button');
     more.setAttribute('aria-label', 'view more details of ' + restaurant.name + ' restaurant');
-    li.append(more);
+
+    const favorite = document.createElement('button');
+    favorite.className = 'favorite-restaurant';
+    favorite.dataset.id = restaurant.id;
+    favorite.dataset.favorite = isFavorite(restaurant);
+    favorite.setAttribute('aria-label', `mark ${restaurant.name} as favorite restaurant`);
+    if (favorite.dataset.favorite === 'true') {
+        favorite.innerHTML = '&#10084;';
+    } else {
+        favorite.innerHTML = '&#9825;';
+    }
+    favorite.addEventListener('click', toggleFavoriteRestaurant);
+
+    const buttons = document.createElement('section');
+    buttons.className = 'action-buttons';
+    buttons.append(more);
+    buttons.append(favorite);
+    li.append(buttons);
 
     return li;
 };
@@ -229,3 +249,47 @@ const addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+/**
+ * Sync favorite restaurants with server
+ */
+const syncFavoriteRestaurantsWithServer = () => {
+    Promise.all(offlineFavoriteRestaurants.map(restaurant => {
+        DBHelper.postFavoriteRestaurantToServer(restaurant);
+    })).then(_ => {
+        offlineFavoriteRestaurants.length = 0;
+    }).catch(_ => {
+        offlineFavoriteRestaurants.length = 0;
+    });
+};
+
+/**
+ * Return true if this is favorite restaurant, else false
+ */
+const isFavorite = (restaurant) => {
+    if (restaurant.is_favorite === undefined || restaurant.is_favorite === 'undefined' || restaurant.is_favorite === false || restaurant.is_favorite === 'false')
+        return false;
+    return true;
+};
+
+/**
+ * Toggle favorite restaurant
+ */
+const toggleFavoriteRestaurant = (event) => {
+    const restaurant_id = event.target.dataset.id;
+    let isFavorite = event.target.dataset.favorite;
+
+    if (isFavorite === 'true') {
+        isFavorite = false;
+        event.target.innerHTML = '&#9825;';
+    } else {
+        isFavorite = true;
+        event.target.innerHTML = '&#10084;';
+    }
+    event.target.dataset.favorite = isFavorite;
+
+    const restaurant = {
+        'restaurant_id': restaurant_id,
+        'isFavorite': isFavorite
+    };
+    DBHelper.postFavoriteRestaurantToDb(restaurant);
+};

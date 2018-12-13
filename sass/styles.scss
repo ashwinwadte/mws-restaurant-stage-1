@@ -234,6 +234,17 @@ select:focus {
   text-decoration: underline;
   box-shadow: 0 0 8px 3px rgba(170, 170, 170, 1);
 }
+.favorite-restaurant {
+  background: none;
+  border: none;
+  color: #9e5500;
+  font-size: 2rem;
+}
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: auto 0 0 0;
+}
 
 
 /* ====================== Restaurant Details ====================== */
@@ -331,7 +342,7 @@ select:focus {
 #reviews-list li p {
   margin: 0 0 10px;
 }
-#reviews-list li p:nth-child(1) {
+#reviews-list li .review-name {
   display: inline-block;
   background: #333;
   color: #fff;
@@ -339,7 +350,7 @@ select:focus {
   padding: 10px 0 10px 20px;
   width: calc(40% - 20px);
 }
-#reviews-list li p:nth-child(2) {
+#reviews-list li .review-date {
   display: inline-block;
   background: #333;
   color: #fff;
@@ -347,7 +358,7 @@ select:focus {
   padding: 10px;
   width: calc(60% - 20px);
 }
-#reviews-list li p:nth-child(3) {
+#reviews-list li .review-rating {
   color: #fff;
   background: #9e5500;
   border-radius: 2px;
@@ -356,17 +367,17 @@ select:focus {
   padding: 5px;
   width: 65px;
 }
-#reviews-list li p:nth-child(4) {
+#reviews-list li .review-comments {
   padding: 0 20px 20px;
 }
 #restaurant-hours td {
   color: #666;
 }
-#restaurant-hours td:nth-child(1) {
+#restaurant-hours .restaurant-hours-day {
   width: 30%;
   text-align: left;
 }
-#restaurant-hours td:nth-child(2) {
+#restaurant-hours .restaurant-hours-time {
   width: 70%;
   text-align: right;
 }
@@ -375,9 +386,53 @@ select:focus {
   margin: 0 auto;
   width: calc(100% - 40px);
 }
+.review-form-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.review-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.review-form-main {
+  width: 100%;
+}
+.review-form-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.review-form-name {
+  width: 60%;
+}
+.review-form-rating {
+  width: 25%;
+}
+.review-form-comments {
+  width: 100%;
+  height: 100px;
+  background: #fff;
+  overflow-y: auto;
+}
+.review-form-submit-button {
+  width: 100%;
+  padding: 12px;
+  background: #9e5500;
+  border: none;
+  border-radius: 10px 0;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.review-form-submit-button:hover, .review-form-submit-button:focus {
+  outline: 0 !important;
+  text-decoration: underline !important;
+  box-shadow: 0 0 8px 3px rgba(170, 170, 170, 1);
+}
 
 /* ====================== Responsive style ====================== */
-/* for screen less than 360px*/
+/* for screen >= 380px*/
 @media screen and (min-width: 380px) {
   .filter-options select {
     width: calc((100% - 40px)/2);
@@ -385,10 +440,16 @@ select:focus {
   }
   #restaurant-hours {
     width: 400px;
-}
+  }
+  .review-form-name {
+    width: 50%;
+  }
+  .review-form-rating {
+    width: 20%;
+  }
 }
 
-/* for screen less than 720px*/
+/* for screen >= 720px*/
 @media screen and (min-width: 720px) {
   .filter-options {
     display: block;
@@ -409,7 +470,7 @@ select:focus {
   }
 }
 
-/* for screen less than 1080px*/
+/* for screen >= 1080px*/
 @media screen and (min-width: 1080px) {
   .filter-options {
     display: block;
@@ -447,9 +508,12 @@ select:focus {
   .inside #footer {
     width: calc(50% - 50px);
   }
+  .review-form-rating {
+    width: 20%;
+  }
 }
 
-/* for screen less than 1500px*/
+/* for screen >= 1500px*/
 @media screen and (min-width: 1500px) {
   #restaurants-list {
     width: 1500px;

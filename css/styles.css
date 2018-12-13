@@ -340,7 +340,7 @@ select:focus {
 #reviews-list li p {
   margin: 0 0 10px; }
 
-#reviews-list li p:nth-child(1) {
+#reviews-list li .review-name {
   display: inline-block;
   background: #333;
   color: #fff;
@@ -348,7 +348,7 @@ select:focus {
   padding: 10px 0 10px 20px;
   width: calc(40% - 20px); }
 
-#reviews-list li p:nth-child(2) {
+#reviews-list li .review-date {
   display: inline-block;
   background: #333;
   color: #fff;
@@ -356,7 +356,7 @@ select:focus {
   padding: 10px;
   width: calc(60% - 20px); }
 
-#reviews-list li p:nth-child(3) {
+#reviews-list li .review-rating {
   color: #fff;
   background: #9e5500;
   border-radius: 2px;
@@ -365,17 +365,17 @@ select:focus {
   padding: 5px;
   width: 65px; }
 
-#reviews-list li p:nth-child(4) {
+#reviews-list li .review-comments {
   padding: 0 20px 20px; }
 
 #restaurant-hours td {
   color: #666; }
 
-#restaurant-hours td:nth-child(1) {
+#restaurant-hours .restaurant-hours-day {
   width: 30%;
   text-align: left; }
 
-#restaurant-hours td:nth-child(2) {
+#restaurant-hours .restaurant-hours-time {
   width: 70%;
   text-align: right; }
 
@@ -384,7 +384,7 @@ select:focus {
   margin: 0 auto;
   width: calc(100% - 40px); }
 
-/* ====================== Responsive style ====================== */
+/* ====================== Responsive style ======================
 /* for screen less than 360px*/
 @media screen and (min-width: 380px) {
   .filter-options select {
